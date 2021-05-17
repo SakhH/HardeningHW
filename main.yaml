@@ -1,0 +1,12 @@
+---
+- name: Create files for iaas
+  hosts: iaas
+  become: yes
+  roles:
+  - create_empty_file
+
+- name: Get system version
+  hosts: all
+  gather_facts: yes
+  roles:
+  - get_system_version
