@@ -1,5 +1,0 @@
----
-# tasks file for get_system_version
-- name: System details
-  debug:
-    msg: "{{ hostvars[inventory_hostname].ansible_distribution }} {{ ansible_distribution_version }}"

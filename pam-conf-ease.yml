@@ -1,0 +1,17 @@
+---
+- hosts: carrot
+  gather_facts: yes
+  become: true
+
+  tasks:
+    - name: install pam_cracklib
+      package:
+        name: libpam-cracklib
+        state: present
+
+    - name: edit config
+      lineinfile:
+        path: '/etc/pam.d/common-password'
+        regexp: '^password.*pam_cracklib\.so'
+        insertbefore: '^password.*pam_unix\.so'
+        line: 'password 	requisite 	pam_cracklib.so reject_username enforce_for_root'

@@ -1,0 +1,12 @@
+---
+- hosts: beetroot
+  become: true
+  
+  tasks:
+    - name: deny all incoming connections
+      lineinfile:
+        path: '/etc/hosts.deny'
+        insertafter: EOF
+        line: 'sshd: ALL EXCEPT 192.168.88.236'
+
+
